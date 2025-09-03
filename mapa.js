@@ -14,7 +14,7 @@ const map = L.map('mapa').setView([-12.5, -41.7], 7);
             if (risco > 0.2) return '#FC4E2A';
             return '#FFEDA0';
         }
-        // carrega os municipios.json e os formatos .csv
+        // carrega os municipios .csv e os formatos dos municipios .json
         Promise.all([
             fetch('AdaptaBrasil_adaptabrasil_desastres_geo-hidrologicos_indice_de_risco_para_inundacoes_enxurradas_e_alagamentos_BR_municipio_2015_geojson.geojson').then(response => response.json()),
             fetch('AdaptaBrasil_adaptabrasil_desastres_geo-hidrologicos_indice_de_risco_para_inundacoes_enxurradas_e_alagamentos_BR_municipio_2015_csv.CSV').then(response => response.text())

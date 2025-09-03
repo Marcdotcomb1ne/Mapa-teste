@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualização AdaptaBrasil</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden; 
+        }
+        .webview-container {
+            display: grid;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+        }
+        iframe {
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            max-width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="webview-container">
+        <iframe src="https://sistema.adaptabrasil.mcti.gov.br/60041/1/2015/null/BR/municipio/null/adaptabrasil" width="800" height="600" title="Mapa Interativo AdaptaBrasil"></iframe>
+    </div>
+
+</body>
+</html>

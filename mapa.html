@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Mapa de Risco de Enchente</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+
+    <style>
+        .map-container {
+            display: flex;
+            justify-content: center; 
+            align-items: center;    
+            padding: 50px 20px; 
+        }
+        body { margin: 0; padding: 0; }
+        #mapa { 
+            width: 800px;
+            height: 600px;
+            max-width: 100%;
+
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2); 
+            border-radius: 8px;
+            border: 1px solid #ccc; 
+        }
+        .info { padding: 6px 8px; font: 14px/16px Arial, Helvetica, sans-serif; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; }
+        .info h4 { margin: 0 0 5px; color: #777; }
+        .legend { text-align: left; line-height: 18px; color: #555; background-color: rgba(255,255,255,0.8); padding: 10px; border-radius: 5px;}
+        .legend i { width: 18px; height: 18px; float: left; margin-right: 8px; opacity: 0.9; }
+    </style>
+</head>
+<body>
+    <div class="map-container">
+        <div id="mapa"></div>
+    </div>
+
+    <script src="mapa.js"></script>
+</body>
+</html>

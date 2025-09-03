@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa de Alertas de Desastres na Bahia</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <style>
+        body { margin: 0; padding: 0; }
+        #mapa {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="mapa"></div>
+
+    <script>
+
+        const map = L.map('mapa').setView([-12.5, -41.7], 6);
+
+        // openstreet
+        const mapaBase = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // --- PLANO C: Usando o serviço de Alertas do INPE (TerraBrasilis) ---
+        // Este serviço é muito estável e mostra alertas de desastres.
+        const wmsEndpointINPE = 'https://terrabrasilis.dpi.inpe.br/geoserver/alertas/wms';
+
+        const camadaAlertas = L.tileLayer.wms(wmsEndpointINPE, {
+            layers: 'alertas:view_alertas_desastres_brasil', // Camada de alertas de desastres
+            format: 'image/png',
+            transparent: true,
+            // Filtro para mostrar apenas alertas na Bahia (BA)
+            //cql_filter: "uf='BA'",
+            attribution: 'Fonte: INPE TerraBrasilis'
+        });
+        
+        camadaAlertas.addTo(map);
+
+        // Controle de Camadas
+        const baseMaps = { "Mapa Base": mapaBase };
+        const overlayMaps = { "Alertas de Desastres (INPE)": camadaAlertas };
+        L.control.layers(baseMaps, overlayMaps).addTo(map);
+
+    </script>
+
+</body>
+</html>
